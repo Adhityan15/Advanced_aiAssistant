@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>✨ AI Assistant ✨</h1>
+    <form method="POST">
+      <textarea name="user_input" placeholder="Enter your question, text, or prompt..." required></textarea>
+      <select name="function" required>
+        <option value="question">Answer a Question</option>
+        <option value="summary">Summarize Text</option>
+        <option value="creative">Creative Content</option>
+      </select>
+      <button type="submit">Ask AI</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <h3>AI Response:</h3>
+      <p>{{ result }}</p>
+    </div>
+
+    <form method="POST">
+      <input type="hidden" name="feedback" value="yes">
+      <button type="submit">👍 Helpful</button>
+    </form>
+
+    <form method="POST">
+      <input type="hidden" name="feedback" value="no">
+      <button type="submit">👎 Not Helpful</button>
+    </form>
+    {% endif %}
+
+    {% if feedback %}
+    <p class="thanks">{{ feedback }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>
