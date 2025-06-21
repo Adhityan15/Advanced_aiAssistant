@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # ✅ OpenRouter API Setup
 openai.api_base = "https://openrouter.ai/api/v1"
-openai.api_key = "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"
+openai.api_key = "your api key"  #https://openrouter.ai/settings/keys
 
 def ask_ai(prompt):
     response = openai.ChatCompletion.create(
